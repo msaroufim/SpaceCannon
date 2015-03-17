@@ -33,6 +33,12 @@
     return YES;
 }
 
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
