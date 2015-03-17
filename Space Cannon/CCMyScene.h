@@ -10,4 +10,8 @@
 
 @interface CCMyScene : SKScene <SKPhysicsContactDelegate>
 
+//nonatomic is faster but does not make guarantees about thread safety
+@property (nonatomic) int ammo;
+@property (nonatomic) int score;
+
 @end

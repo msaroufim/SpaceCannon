@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4D00FF411AB7DEB100848A9D /* HaloExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4D00FF3F1AB7DEB100848A9D /* HaloExplosion.sks */; };
 		4D00FF421AB7DEB100848A9D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D00FF401AB7DEB100848A9D /* spark.png */; };
+		4D00FF441AB7F30800848A9D /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4D00FF431AB7F30800848A9D /* MyParticle.sks */; };
+		4D00FF461AB7F34600848A9D /* LifeBarExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4D00FF451AB7F34600848A9D /* LifeBarExplosion.sks */; };
 		4DD07EFB1AB129A000846D9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFA1AB129A000846D9A /* Foundation.framework */; };
 		4DD07EFD1AB129A000846D9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFC1AB129A000846D9A /* CoreGraphics.framework */; };
 		4DD07EFF1AB129A000846D9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFE1AB129A000846D9A /* UIKit.framework */; };
@@ -53,6 +55,8 @@
 /* Begin PBXFileReference section */
 		4D00FF3F1AB7DEB100848A9D /* HaloExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HaloExplosion.sks; sourceTree = "<group>"; };
 		4D00FF401AB7DEB100848A9D /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		4D00FF431AB7F30800848A9D /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		4D00FF451AB7F34600848A9D /* LifeBarExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LifeBarExplosion.sks; sourceTree = "<group>"; };
 		4DD07EF71AB129A000846D9A /* Space Cannon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Cannon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD07EFA1AB129A000846D9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DD07EFC1AB129A000846D9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -162,6 +166,8 @@
 				4DD07F031AB129A000846D9A /* Supporting Files */,
 				4D00FF3F1AB7DEB100848A9D /* HaloExplosion.sks */,
 				4D00FF401AB7DEB100848A9D /* spark.png */,
+				4D00FF431AB7F30800848A9D /* MyParticle.sks */,
+				4D00FF451AB7F34600848A9D /* LifeBarExplosion.sks */,
 			);
 			path = "Space Cannon";
 			sourceTree = "<group>";
@@ -302,8 +308,10 @@
 				4DD07F461AB12B1600846D9A /* Ammo0@2x.png in Resources */,
 				4DD07F471AB12B1600846D9A /* Ammo1@2x.png in Resources */,
 				4DD07F131AB129A000846D9A /* Main_iPad.storyboard in Resources */,
+				4D00FF441AB7F30800848A9D /* MyParticle.sks in Resources */,
 				4DD07F101AB129A000846D9A /* Main_iPhone.storyboard in Resources */,
 				4D00FF411AB7DEB100848A9D /* HaloExplosion.sks in Resources */,
+				4D00FF461AB7F34600848A9D /* LifeBarExplosion.sks in Resources */,
 				4DD07F071AB129A000846D9A /* InfoPlist.strings in Resources */,
 				4DD07F511AB12B1600846D9A /* Starfield@2x.png in Resources */,
 				4DD07F491AB12B1600846D9A /* Ammo3@2x.png in Resources */,
