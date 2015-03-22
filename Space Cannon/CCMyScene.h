@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "AVFoundation/AVFoundation.h"
 
 @interface CCMyScene : SKScene <SKPhysicsContactDelegate>
 

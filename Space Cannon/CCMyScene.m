@@ -7,11 +7,12 @@
 //
 
 #import "CCMyScene.h"
+#import "CCMenu.h"
 
 @implementation CCMyScene
 {
     //define main nodes here to make them accessible from all methods
-    
+    CCMenu *_menu;
     SKNode *_mainLayer;
     SKSpriteNode *_cannon;
     SKSpriteNode *_ammoDisplay;
@@ -30,7 +31,6 @@ static const uint32_t  BallCategory = 0x1    <<1;
 static const uint32_t  EdgeCategory = 0x1    <<2;
 static const uint32_t  ShieldCategory = 0x1  <<3;
 static const uint32_t  LifeBarCategory = 0x1 <<4;
-
 
 
 static inline CGVector radiansToVect(CGFloat radians) {
@@ -124,6 +124,18 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         _scoreLabel.horizontalAlignmentMode  = SKLabelHorizontalAlignmentModeLeft;
         _scoreLabel.fontSize = 15;
         [self addChild:_scoreLabel];
+        
+        
+        //Setup sounds
+        
+        
+        
+        
+        //Setup menu
+        
+        _menu = [[CCMenu alloc] init];
+        _menu.position = CGPointMake(self.size.width * 0.5,self.size.height - 220 );
+        [self addChild:_menu];
         
         [self newGame];
         
