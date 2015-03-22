@@ -18,6 +18,9 @@
     SKSpriteNode *_ammoDisplay;
     SKLabelNode *_scoreLabel;
     BOOL _didShoot;
+    
+    
+    BOOL _gameOver;
 }
 
 static const CGFloat HaloLowAngle = 200.0 * M_PI /180;
@@ -136,8 +139,11 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         _menu = [[CCMenu alloc] init];
         _menu.position = CGPointMake(self.size.width * 0.5,self.size.height - 220 );
         [self addChild:_menu];
+        _gameOver = YES;
+
         
-        [self newGame];
+        
+//        [self newGame];
         
         
     }
@@ -270,7 +276,8 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         [node removeFromParent];
     }];
     
-    [self performSelector:@selector(newGame) withObject:nil afterDelay:1.5];
+    _menu.hidden = NO;
+    _gameOver = YES;
 }
 
 -(void)newGame
@@ -297,6 +304,9 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     lifeBar.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(-lifeBar.size.width * 0.5,0) toPoint:CGPointMake(lifeBar.size.width * 0.5, 0)];
     lifeBar.physicsBody.categoryBitMask = LifeBarCategory;
     [self addChild:lifeBar];
+    
+    _gameOver = NO;
+    _menu.hidden = YES;
     
     
 }
@@ -333,8 +343,22 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     /* Called when a touch begins */
     
     for (UITouch *touch in touches) {
+        if(!_gameOver) {
         _didShoot = YES;
-        [self shoot];
+            [self shoot];
+        }
+    }
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    for (UITouch *touch in touches) {
+        if(_gameOver) {
+            SKNode *n = [_menu nodeAtPoint:[touch locationInNode:_menu]];
+            if([n.name isEqualToString:@"Play"]) {
+                [self newGame];
+            }
+            
+        }
     }
 }
 

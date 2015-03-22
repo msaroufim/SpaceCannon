@@ -23,6 +23,7 @@
         [self addChild:scoreBoard];
         
         SKSpriteNode *playButton = [SKSpriteNode spriteNodeWithImageNamed:@"PlayButton"];
+        playButton.name = @"Play";
         playButton.position = CGPointMake(0, 0);
         [self addChild:playButton];
     }
