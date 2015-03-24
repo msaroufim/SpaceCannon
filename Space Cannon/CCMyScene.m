@@ -263,15 +263,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
 }
 
 -(void)shoot
-//Alternativly it's possible to limit number of cannon ball nodes on screen
-    
-//    int availableAmmo = 2;
-//    
-//    for(SKNode *node in _mainLayer.children) {
-//        if([node.name isEqualToString:@"ball"]) {
-//            availableAmmo--;
-//        }
-//    }
+
 {
     if (self.ammo > 0) {
         self.ammo--;
@@ -282,6 +274,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         ball.position = CGPointMake(_cannon.position.x + (_cannon.size.width * 0.5 * rotationVector.dx),
                                     _cannon.position.y + (_cannon.size.width * 0.5 * rotationVector.dy));
    
+        [_mainLayer addChild:ball];
         ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:6.0];
         ball.physicsBody.velocity = CGVectorMake(rotationVector.dx * SHOOTSPEED, rotationVector.dy * SHOOTSPEED);
         ball.physicsBody.restitution = 1.0;
@@ -289,13 +282,20 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         ball.physicsBody.friction = 0.0;
         ball.physicsBody.categoryBitMask = BallCategory;
     
-    //defines categories of things ball will collide to
-    //so ball will only react to edges
+        //defines categories of things ball will collide to
+        //so ball will only react to edges
         ball.physicsBody.collisionBitMask = EdgeCategory;
         [self runAction:_laserSound];
+        
+        //create trail
+        NSString *ballTrailPath = [[NSBundle mainBundle] pathForResource:@"BallTrail" ofType:@"sks"];
+        SKEmitterNode *ballTrail = [NSKeyedUnarchiver unarchiveObjectWithFile:ballTrailPath];
+        //particle exists in coordinate system of mainlayer instead of that of ball
+        ballTrail.targetNode = _mainLayer;
+        [ball addChild:ballTrail];
     
     
-        [_mainLayer addChild:ball];
+        
     }
 }
 
