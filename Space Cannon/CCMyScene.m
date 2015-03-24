@@ -8,6 +8,7 @@
 
 #import "CCMyScene.h"
 #import "CCMenu.h"
+#import "CCBall.h"
 
 @implementation CCMyScene
 {
@@ -268,7 +269,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     if (self.ammo > 0) {
         self.ammo--;
 
-        SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"Ball"];
+        CCBall *ball = [CCBall spriteNodeWithImageNamed:@"Ball"];
         ball.name = @"ball";
         CGVector rotationVector = radiansToVect(_cannon.zRotation);
         ball.position = CGPointMake(_cannon.position.x + (_cannon.size.width * 0.5 * rotationVector.dx),
@@ -292,7 +293,8 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         SKEmitterNode *ballTrail = [NSKeyedUnarchiver unarchiveObjectWithFile:ballTrailPath];
         //particle exists in coordinate system of mainlayer instead of that of ball
         ballTrail.targetNode = _mainLayer;
-        [ball addChild:ballTrail];
+        [_mainLayer addChild:ballTrail];
+        ball.trail = ballTrail;
     
     
         
@@ -421,7 +423,20 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     if(_didShoot) {
         _didShoot = NO;
     }
+    
+    
+    
+    
+    
+    
     [_mainLayer enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
+        
+        if ([node respondsToSelector:@selector(updateTrail)]) {
+            [node performSelectorOnMainThread:@selector(updateTrail) withObject:nil waitUntilDone:NO];
+        }
+        
+        
+        
         if (!CGRectContainsPoint(self.frame,node.position)) {
             [node removeFromParent];
         }

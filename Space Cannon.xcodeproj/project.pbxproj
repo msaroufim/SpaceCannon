@@ -40,6 +40,7 @@
 		4D6531C31ABE771600CA6301 /* Halo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6531B21ABE771600CA6301 /* Halo@2x.png */; };
 		4D6531C41ABE771600CA6301 /* Starfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6531B31ABE771600CA6301 /* Starfield@2x.png */; };
 		4D9130C81AC1455200D418E4 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4D9130C71AC1455200D418E4 /* BallTrail.sks */; };
+		4D9130CB1AC1489F00D418E4 /* CCBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9130CA1AC1489F00D418E4 /* CCBall.m */; };
 		4DD07EFB1AB129A000846D9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFA1AB129A000846D9A /* Foundation.framework */; };
 		4DD07EFD1AB129A000846D9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFC1AB129A000846D9A /* CoreGraphics.framework */; };
 		4DD07EFF1AB129A000846D9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFE1AB129A000846D9A /* UIKit.framework */; };
@@ -104,6 +105,8 @@
 		4D6531B21ABE771600CA6301 /* Halo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Halo@2x.png"; sourceTree = "<group>"; };
 		4D6531B31ABE771600CA6301 /* Starfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Starfield@2x.png"; sourceTree = "<group>"; };
 		4D9130C71AC1455200D418E4 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
+		4D9130C91AC1489F00D418E4 /* CCBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBall.h; sourceTree = "<group>"; };
+		4D9130CA1AC1489F00D418E4 /* CCBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBall.m; sourceTree = "<group>"; };
 		4DD07EF71AB129A000846D9A /* Space Cannon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Cannon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD07EFA1AB129A000846D9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DD07EFC1AB129A000846D9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -249,6 +252,8 @@
 				4DD07F151AB129A000846D9A /* CCViewController.m */,
 				4DD07F171AB129A000846D9A /* CCMyScene.h */,
 				4DD07F181AB129A000846D9A /* CCMyScene.m */,
+				4D9130C91AC1489F00D418E4 /* CCBall.h */,
+				4D9130CA1AC1489F00D418E4 /* CCBall.m */,
 				4D9130C71AC1455200D418E4 /* BallTrail.sks */,
 				4DD07F1C1AB129A000846D9A /* Images.xcassets */,
 				4DD07F031AB129A000846D9A /* Supporting Files */,
@@ -424,6 +429,7 @@
 			files = (
 				4DD07F191AB129A000846D9A /* CCMyScene.m in Sources */,
 				4DD07F0D1AB129A000846D9A /* CCAppDelegate.m in Sources */,
+				4D9130CB1AC1489F00D418E4 /* CCBall.m in Sources */,
 				4D2BA2681ABE89E60001758A /* CCMenu.m in Sources */,
 				4DD07F091AB129A000846D9A /* main.m in Sources */,
 				4DD07F161AB129A000846D9A /* CCViewController.m in Sources */,
