@@ -258,6 +258,13 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     
     if (firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == EdgeCategory) {
         [self runAction:_bounceSound];
+        if ([firstBody.node isKindOfClass:[CCBall class]]) {
+            //cast firstbody.node to ccball
+            ((CCBall *) firstBody.node).bounces++;
+            if (((CCBall *) firstBody.node).bounces > 3) {
+                [firstBody.node removeFromParent];
+            }
+        }
     }
 
 
@@ -315,7 +322,9 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     [_mainLayer enumerateChildNodesWithName:@"shield" usingBlock:^(SKNode *node, BOOL *stop) {
         [node removeFromParent];
     }];
+    
     _menu.score = self.score;
+    
     if(self.score > _menu.topScore) {
         _menu.topScore = self.score;
         [_userDefaults setInteger:self.score forKey:KeyTopScore];
@@ -428,7 +437,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     
     
     
-    
+   //Remove nodes missing from page
     
     [_mainLayer enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
         
