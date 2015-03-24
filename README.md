@@ -9,7 +9,7 @@
 * Prevent the Red balls from reaching the blue line
 * Listen to some deep house music
 
-
+![alt tag](screenshots/gameplay.gif)
 
 
 *To play just clone and Command-R in Xcode :)**
