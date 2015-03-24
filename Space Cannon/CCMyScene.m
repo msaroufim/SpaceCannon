@@ -111,7 +111,8 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         
         SKAction *spawnHalo = [SKAction sequence:@[[SKAction waitForDuration:2 withRange:1],
                                                    [SKAction performSelector:@selector(spawnHalo) onTarget:self]]];
-        [self runAction:[SKAction repeatActionForever:spawnHalo]];
+        
+        [self runAction:[SKAction repeatActionForever:spawnHalo] withKey:@"SpawnHalo"];
         
         //Setup ammo
         _ammoDisplay = [SKSpriteNode spriteNodeWithImageNamed:@"Ammo5"];
@@ -187,6 +188,13 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
 
 -(void)spawnHalo
 {
+    //Increase spawn speed
+    SKAction *spawnHaloAction = [self actionForKey:@"SpawnHalo"];
+    if(spawnHaloAction.speed < 1.5) {
+        spawnHaloAction.speed += 0.01;
+    }
+    
+    
     SKSpriteNode *halo = [SKSpriteNode spriteNodeWithImageNamed:@"Halo"];
     halo.name = @"halo";
     halo.position = CGPointMake(randomInRange(halo.size.width * 0.5, self.size.width - (halo.size.width * 0.5)),self.size.height + (halo.size.height * 0.5));
@@ -320,9 +328,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
 
 -(void)newGame
 {
-    self.ammo = AmmoCount;
-    self.score = 0;
-    _scoreLabel.hidden = NO;
+   
   
     [_mainLayer removeAllChildren];
     
@@ -345,8 +351,16 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     lifeBar.physicsBody.categoryBitMask = LifeBarCategory;
     [self addChild:lifeBar];
     
-    _gameOver = NO;
+    
+    
+    //Set newGame Initial values
+    [self actionForKey:@"SpawnHalo"].speed = 1.0;
+    self.ammo = AmmoCount;
+    self.score = 0;
+    _scoreLabel.hidden = NO;
     _menu.hidden = YES;
+    _gameOver = NO;
+  
     
     
 }
