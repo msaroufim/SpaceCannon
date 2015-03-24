@@ -413,6 +413,13 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         }
         
     }];
+    
+    //if halo is below the bottom of the screen
+    [_mainLayer enumerateChildNodesWithName:@"halo" usingBlock:^(SKNode *node, BOOL *stop) {
+        if(node.position.y + node.frame.size.height < 0) {
+            [node removeFromParent];
+        }
+    }];
    
 }
 
