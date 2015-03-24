@@ -17,7 +17,7 @@
     SKNode *_mainLayer;
     SKSpriteNode *_cannon;
     SKSpriteNode *_ammoDisplay;
-    SKAction *_bouceSound;
+    SKAction *_bounceSound;
     SKAction *_deepExplosionSound;
     SKAction *_explosionSound;
     SKAction *_laserSound;
@@ -139,7 +139,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         
         
         //Setup sounds
-        _bouceSound = [SKAction playSoundFileNamed:@"Bounce.caf" waitForCompletion:NO];
+        _bounceSound = [SKAction playSoundFileNamed:@"Bounce.caf" waitForCompletion:NO];
         _deepExplosionSound = [SKAction playSoundFileNamed:@"DeepExplosion.caf" waitForCompletion:NO];
         _explosionSound = [SKAction playSoundFileNamed:@"Explosion.caf" waitForCompletion:NO];
         _laserSound= [SKAction playSoundFileNamed:@"Laser.caf" waitForCompletion:NO];
@@ -257,7 +257,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     }
     
     if (firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == EdgeCategory) {
-        [self runAction:_bouceSound];
+        [self runAction:_bounceSound];
     }
 
 
@@ -286,6 +286,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         //defines categories of things ball will collide to
         //so ball will only react to edges
         ball.physicsBody.collisionBitMask = EdgeCategory;
+        ball.physicsBody.contactTestBitMask = EdgeCategory;
         [self runAction:_laserSound];
         
         //create trail
