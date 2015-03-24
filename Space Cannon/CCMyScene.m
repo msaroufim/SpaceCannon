@@ -22,9 +22,8 @@
     SKAction *_laserSound;
     SKAction *_zapSound;
     SKLabelNode *_scoreLabel;
+    NSUserDefaults *_userDefaults;
     BOOL _didShoot;
-    
-    
     BOOL _gameOver;
 }
 
@@ -39,6 +38,9 @@ static const uint32_t  BallCategory = 0x1    <<1;
 static const uint32_t  EdgeCategory = 0x1    <<2;
 static const uint32_t  ShieldCategory = 0x1  <<3;
 static const uint32_t  LifeBarCategory = 0x1 <<4;
+
+static NSString * const KeyTopScore = @"TopScore";
+
 
 
 static inline CGVector radiansToVect(CGFloat radians) {
@@ -156,6 +158,12 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         self.score = 0;
         _gameOver = YES;
         _scoreLabel.hidden = YES;
+        
+        
+        //Set User Defaults
+        _userDefaults = [NSUserDefaults standardUserDefaults];
+        _menu.topScore = [_userDefaults integerForKey:KeyTopScore];
+        
         
     }
     return self;
@@ -299,6 +307,9 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     _menu.score = self.score;
     if(self.score > _menu.topScore) {
         _menu.topScore = self.score;
+        [_userDefaults setInteger:self.score forKey:KeyTopScore];
+        [_userDefaults synchronize];
+        
     }
     _menu.hidden = NO;
     _gameOver = YES;
