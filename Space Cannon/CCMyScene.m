@@ -16,6 +16,11 @@
     SKNode *_mainLayer;
     SKSpriteNode *_cannon;
     SKSpriteNode *_ammoDisplay;
+    SKAction *_bouceSound;
+    SKAction *_deepExplosionSound;
+    SKAction *_explosionSound;
+    SKAction *_laserSound;
+    SKAction *_zapSound;
     SKLabelNode *_scoreLabel;
     BOOL _didShoot;
     
@@ -130,7 +135,11 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         
         
         //Setup sounds
-        
+        _bouceSound = [SKAction playSoundFileNamed:@"Bounce.caf" waitForCompletion:NO];
+        _deepExplosionSound = [SKAction playSoundFileNamed:@"DeepExplosion.caf" waitForCompletion:NO];
+        _explosionSound = [SKAction playSoundFileNamed:@"Explosion.caf" waitForCompletion:NO];
+        _laserSound= [SKAction playSoundFileNamed:@"Laser.caf" waitForCompletion:NO];
+        _zapSound = [SKAction playSoundFileNamed:@"Zap.caf" waitForCompletion:NO];
         
         
         
@@ -139,12 +148,14 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         _menu = [[CCMenu alloc] init];
         _menu.position = CGPointMake(self.size.width * 0.5,self.size.height - 220 );
         [self addChild:_menu];
-        _gameOver = YES;
 
         
         
-//        [self newGame];
-        
+        //Set Initial values
+        self.ammo = AmmoCount;
+        self.score = 0;
+        _gameOver = YES;
+        _scoreLabel.hidden = YES;
         
     }
     return self;
@@ -181,7 +192,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     halo.physicsBody.collisionBitMask = EdgeCategory ;
     
     //alert when collision with ball happens
-    halo.physicsBody.contactTestBitMask = BallCategory | LifeBarCategory | ShieldCategory;
+    halo.physicsBody.contactTestBitMask = BallCategory | LifeBarCategory | ShieldCategory | EdgeCategory;
     [_mainLayer addChild:halo];
 }
 
@@ -201,6 +212,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     if(firstBody.categoryBitMask == HaloCategory && secondBody.categoryBitMask == BallCategory) {
         self.score++;
         [self addExplosion:firstBody.node.position withName:@"HaloExplosion"];
+        [self runAction:_explosionSound];
         [firstBody.node removeFromParent];
         [secondBody.node removeFromParent];
     }
@@ -210,18 +222,26 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
        [self addExplosion:firstBody.node.position withName:@"HaloExplosion"];
         [firstBody.node removeFromParent];
         [secondBody.node removeFromParent];
+        [self runAction:_explosionSound];
     }
     
     if(firstBody.categoryBitMask == HaloCategory && secondBody.categoryBitMask == LifeBarCategory) {
         [self addExplosion:firstBody.node.position withName:@"HaloExplosion"];
         [self addExplosion:secondBody.node.position withName:@"LifeBarExplosion"];
-        
+        [self runAction:_deepExplosionSound];
         [firstBody.node removeFromParent];
         [secondBody.node removeFromParent];
         [self gameOver];
         
     }
     
+    if (firstBody.categoryBitMask == HaloCategory && secondBody.categoryBitMask == EdgeCategory) {
+        [self runAction:_zapSound];
+    }
+    
+    if (firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == EdgeCategory) {
+        [self runAction:_bouceSound];
+    }
 
 
 }
@@ -256,6 +276,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     //defines categories of things ball will collide to
     //so ball will only react to edges
         ball.physicsBody.collisionBitMask = EdgeCategory;
+        [self runAction:_laserSound];
     
     
         [_mainLayer addChild:ball];
@@ -275,15 +296,23 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     [_mainLayer enumerateChildNodesWithName:@"shield" usingBlock:^(SKNode *node, BOOL *stop) {
         [node removeFromParent];
     }];
-    
+    _menu.score = self.score;
+    if(self.score > _menu.topScore) {
+        _menu.topScore = self.score;
+    }
     _menu.hidden = NO;
     _gameOver = YES;
+    _scoreLabel.hidden = YES;
+    
+    
 }
 
 -(void)newGame
 {
     self.ammo = AmmoCount;
     self.score = 0;
+    _scoreLabel.hidden = NO;
+  
     [_mainLayer removeAllChildren];
     
     //Setup shields
