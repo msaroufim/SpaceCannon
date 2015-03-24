@@ -10,7 +10,7 @@
 * Listen to some deep house music
 
 ![alt tag](screenshots/gameplay.gif)
+Contrary to the 7MB gif above, the game does run smoothly
 
-
-*To play just clone and Command-R in Xcode :)**
+*To play just clone and Command-R in Xcode :)*
 
