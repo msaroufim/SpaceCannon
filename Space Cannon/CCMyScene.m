@@ -235,8 +235,26 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     
     
     //PowerUps
-    //Random Point Multiplier
-    if (!_gameOver && arc4random_uniform(6) == 0) {
+    
+    
+    int haloCount = 0;
+    for (SKNode * node in _mainLayer.children) {
+        if ([node.name isEqualToString:@"Halo"]) {
+            haloCount++;
+            
+        }
+    }
+    
+    if (haloCount == 4) {
+        //Create bomb
+        halo.texture = [SKTexture textureWithImageNamed:@"HaloBomb"];
+        halo.userData = [[NSMutableDictionary alloc] init];
+        [halo.userData setValue:@YES forKey:@"Bomb"];
+        
+    }
+    
+  //Random Point Multiplier
+  else  if (!_gameOver && arc4random_uniform(6) == 0) {
         halo.texture = [SKTexture textureWithImageNamed:@"HaloX"];
         halo.userData = [[NSMutableDictionary alloc] init];
         [halo.userData setValue:@YES forKey:@"Multiplier"];
@@ -267,6 +285,15 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         
         if ([firstBody.node.userData valueForKey:@"Multiplier"]) {
             self.pointValue++;
+        } else if ([[firstBody.node.userData valueForKey:@"Bomb"] boolValue]) {
+            firstBody.node.name = nil; //to prevent firstbody from exploding twice
+            [_mainLayer enumerateChildNodesWithName:@"halo" usingBlock:^(SKNode *node, BOOL *stop) {
+                self.score += self.pointValue;
+                [self addExplosion:node.position withName:@"HaloExplosion"];
+                [node removeFromParent];
+            }];
+            
+            
         }
         
         [firstBody.node removeFromParent];
@@ -280,8 +307,14 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         [secondBody.node removeFromParent];
         [self runAction:_explosionSound];
     
-    
         
+        if ([[firstBody.node.userData valueForKey:@"Bomb"] boolValue]) {
+        
+        //Remove all shield
+        [_mainLayer enumerateChildNodesWithName:@"shield" usingBlock:^(SKNode *node, BOOL *stop) {
+            [node removeFromParent];
+        }];
+        }
     
     }
     

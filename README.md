@@ -8,7 +8,9 @@
 * Shoot as many Red Balls as you can
 * Don't shoot too much, you can have at most 5 cannon balls at a time and regenerate 1 every second
 * Prevent the Red balls from reaching the blue line
-* Listen to some deep house music
+* Red Balls with an X are score multipliers
+* Balls with a star are bombs, hit them quickly
+* Listen to some deep house music, Paul Kalkbrenner is pretty great
 
 ![alt tag](screenshots/gameplay.gif)
 
