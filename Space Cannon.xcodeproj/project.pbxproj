@@ -39,6 +39,7 @@
 		4D6531C21ABE771600CA6301 /* Cannon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6531B11ABE771600CA6301 /* Cannon@2x.png */; };
 		4D6531C31ABE771600CA6301 /* Halo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6531B21ABE771600CA6301 /* Halo@2x.png */; };
 		4D6531C41ABE771600CA6301 /* Starfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6531B31ABE771600CA6301 /* Starfield@2x.png */; };
+		4D800AA91AC2712800D846EE /* HaloX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D800AA81AC2712800D846EE /* HaloX@2x.png */; };
 		4D9130C81AC1455200D418E4 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4D9130C71AC1455200D418E4 /* BallTrail.sks */; };
 		4D9130CB1AC1489F00D418E4 /* CCBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9130CA1AC1489F00D418E4 /* CCBall.m */; };
 		4DD07EFB1AB129A000846D9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFA1AB129A000846D9A /* Foundation.framework */; };
@@ -104,6 +105,7 @@
 		4D6531B11ABE771600CA6301 /* Cannon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cannon@2x.png"; sourceTree = "<group>"; };
 		4D6531B21ABE771600CA6301 /* Halo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Halo@2x.png"; sourceTree = "<group>"; };
 		4D6531B31ABE771600CA6301 /* Starfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Starfield@2x.png"; sourceTree = "<group>"; };
+		4D800AA81AC2712800D846EE /* HaloX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HaloX@2x.png"; sourceTree = "<group>"; };
 		4D9130C71AC1455200D418E4 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
 		4D9130C91AC1489F00D418E4 /* CCBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBall.h; sourceTree = "<group>"; };
 		4D9130CA1AC1489F00D418E4 /* CCBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBall.m; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		4D6531A71ABE771600CA6301 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4D800AA81AC2712800D846EE /* HaloX@2x.png */,
 				4D109E611ABE7ABB00D1BC76 /* PlayButton@2x.png */,
 				4D109E621ABE7ABB00D1BC76 /* ScoreBoard@2x.png */,
 				4D109E631ABE7ABB00D1BC76 /* Starfield@2x.png */,
@@ -394,6 +397,7 @@
 				4D2BA2571ABE81940001758A /* DeepExplosion.caf in Resources */,
 				4D3EC6661AC1210D00E93FC2 /* Bounce.caf in Resources */,
 				4D2BA2621ABE82320001758A /* DeepExplosion.caf in Resources */,
+				4D800AA91AC2712800D846EE /* HaloX@2x.png in Resources */,
 				4D2BA25A1ABE81940001758A /* Zap.caf in Resources */,
 				4DD07F131AB129A000846D9A /* Main_iPad.storyboard in Resources */,
 				4D2BA2641ABE82320001758A /* Laser.caf in Resources */,
