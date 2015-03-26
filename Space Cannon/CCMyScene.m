@@ -9,10 +9,12 @@
 #import "CCMyScene.h"
 #import "CCMenu.h"
 #import "CCBall.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation CCMyScene
 {
     //define main nodes here to make them accessible from all methods
+    AVAudioPlayer *_audioPlayer;
     CCMenu *_menu;
     SKNode *_mainLayer;
     SKSpriteNode *_cannon;
@@ -194,6 +196,18 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         _userDefaults = [NSUserDefaults standardUserDefaults];
         _menu.topScore = [_userDefaults integerForKey:KeyTopScore];
         
+        //Load Music
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"Azure" withExtension:@"caf"];
+        NSError *error = nil;
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        
+        if (!_audioPlayer) {
+            NSLog(@"Error loading audio player: %@",error);
+        } else {
+            //repeat music forever
+            _audioPlayer.numberOfLoops = -1;
+            [_audioPlayer play];
+        }
         
     }
     return self;

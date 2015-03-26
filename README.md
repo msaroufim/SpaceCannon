@@ -10,7 +10,9 @@
 * Prevent the Red balls from reaching the blue line
 * Red Balls with an X are score multipliers
 * Balls with a star are bombs, hit them quickly
-* Listen to some deep house music, Paul Kalkbrenner is pretty great
+* Click on pause button at bottom right if the game gets too intense
+* Listen to some deep house music, Paul Kalkbrenner's Azure is pretty great
+
 
 ![alt tag](screenshots/gameplay.gif)
 
