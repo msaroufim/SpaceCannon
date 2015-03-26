@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Space Cannon/CCMyScene.m"
-            timestampString = "448952391.563476"
+            timestampString = "449030050.794929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-initWithSize:"
             landmarkType = "5">
          </BreakpointContent>

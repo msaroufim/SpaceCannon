@@ -41,6 +41,8 @@
 		4D6531C41ABE771600CA6301 /* Starfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6531B31ABE771600CA6301 /* Starfield@2x.png */; };
 		4D800AA91AC2712800D846EE /* HaloX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D800AA81AC2712800D846EE /* HaloX@2x.png */; };
 		4D800AAB1AC27A0700D846EE /* HaloBomb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D800AAA1AC27A0700D846EE /* HaloBomb@2x.png */; };
+		4D800AAE1AC3A5D500D846EE /* PauseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D800AAC1AC3A5D500D846EE /* PauseButton@2x.png */; };
+		4D800AAF1AC3A5D500D846EE /* ResumeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D800AAD1AC3A5D500D846EE /* ResumeButton@2x.png */; };
 		4D9130C81AC1455200D418E4 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4D9130C71AC1455200D418E4 /* BallTrail.sks */; };
 		4D9130CB1AC1489F00D418E4 /* CCBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9130CA1AC1489F00D418E4 /* CCBall.m */; };
 		4DD07EFB1AB129A000846D9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD07EFA1AB129A000846D9A /* Foundation.framework */; };
@@ -108,6 +110,8 @@
 		4D6531B31ABE771600CA6301 /* Starfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Starfield@2x.png"; sourceTree = "<group>"; };
 		4D800AA81AC2712800D846EE /* HaloX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HaloX@2x.png"; sourceTree = "<group>"; };
 		4D800AAA1AC27A0700D846EE /* HaloBomb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HaloBomb@2x.png"; sourceTree = "<group>"; };
+		4D800AAC1AC3A5D500D846EE /* PauseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PauseButton@2x.png"; sourceTree = "<group>"; };
+		4D800AAD1AC3A5D500D846EE /* ResumeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResumeButton@2x.png"; sourceTree = "<group>"; };
 		4D9130C71AC1455200D418E4 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
 		4D9130C91AC1489F00D418E4 /* CCBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBall.h; sourceTree = "<group>"; };
 		4D9130CA1AC1489F00D418E4 /* CCBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBall.m; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 		4D6531A71ABE771600CA6301 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4D800AAC1AC3A5D500D846EE /* PauseButton@2x.png */,
+				4D800AAD1AC3A5D500D846EE /* ResumeButton@2x.png */,
 				4D800AAA1AC27A0700D846EE /* HaloBomb@2x.png */,
 				4D800AA81AC2712800D846EE /* HaloX@2x.png */,
 				4D109E611ABE7ABB00D1BC76 /* PlayButton@2x.png */,
@@ -392,6 +398,7 @@
 				4D2BA2591ABE81940001758A /* Laser.caf in Resources */,
 				4D6531B91ABE771600CA6301 /* Ammo0@2x.png in Resources */,
 				4D2BA2561ABE81940001758A /* Azure.caf in Resources */,
+				4D800AAF1AC3A5D500D846EE /* ResumeButton@2x.png in Resources */,
 				4D6531C41ABE771600CA6301 /* Starfield@2x.png in Resources */,
 				4D6531C21ABE771600CA6301 /* Cannon@2x.png in Resources */,
 				4D6531BD1ABE771600CA6301 /* Ammo4@2x.png in Resources */,
@@ -412,6 +419,7 @@
 				4D00FF411AB7DEB100848A9D /* HaloExplosion.sks in Resources */,
 				4D00FF461AB7F34600848A9D /* LifeBarExplosion.sks in Resources */,
 				4D2BA2581ABE81940001758A /* Explosion.caf in Resources */,
+				4D800AAE1AC3A5D500D846EE /* PauseButton@2x.png in Resources */,
 				4DD07F071AB129A000846D9A /* InfoPlist.strings in Resources */,
 				4D109E671ABE7ABB00D1BC76 /* Starfield@2x.png in Resources */,
 				4D2BA2651ABE82320001758A /* Zap.caf in Resources */,

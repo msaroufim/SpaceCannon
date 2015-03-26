@@ -17,6 +17,8 @@
     SKNode *_mainLayer;
     SKSpriteNode *_cannon;
     SKSpriteNode *_ammoDisplay;
+    SKSpriteNode *_pauseButton;
+    SKSpriteNode *_resumeButton;
     SKAction *_bounceSound;
     SKAction *_deepExplosionSound;
     SKAction *_explosionSound;
@@ -131,6 +133,16 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         [self runAction:[SKAction repeatActionForever:incrementAmmo]];
         
         
+        //Setup pause button
+        _pauseButton = [SKSpriteNode spriteNodeWithImageNamed:@"PauseButton"];
+        _pauseButton.position = CGPointMake(self.size.width - 30, 20);
+        [self addChild:_pauseButton];
+        
+        //Setup Resume button
+        _resumeButton = [SKSpriteNode spriteNodeWithImageNamed:@"ResumeButton"];
+        _resumeButton.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+        [self addChild:_resumeButton];
+        
         //Score Label
         _scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"DIN Alternate"];
         _scoreLabel.position = CGPointMake(15,10);
@@ -172,6 +184,8 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
         _gameOver = YES;
         _scoreLabel.hidden = YES;
         _pointLabel.hidden = YES;
+        _pauseButton.hidden = YES;
+        _resumeButton.hidden = YES;
         
         
         //Set User Defaults
@@ -205,6 +219,16 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
 {
     _pointValue = pointValue;
     _pointLabel.text = [NSString stringWithFormat:@"Points: x%d", pointValue];
+}
+
+-(void)setGamePaused:(bool)gamePaused
+{
+    _gamePaused = gamePaused;
+    _pauseButton.hidden = gamePaused;
+    _resumeButton.hidden = !gamePaused;
+    
+    //pauses entire scene
+    self.paused = gamePaused;
 }
 
 -(void)spawnHalo
@@ -413,6 +437,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     _gameOver = YES;
     _scoreLabel.hidden = YES;
     _scoreLabel.hidden = YES;
+    _pauseButton.hidden = YES;
     [self runAction:[SKAction waitForDuration:1.0] completion:^{
         [_menu show];
     }];
@@ -453,6 +478,7 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     self.score = 0;
     _scoreLabel.hidden = NO;
     _pointLabel.hidden = NO;
+    _pauseButton.hidden = NO;
     [_menu hide];
     _gameOver = NO;
   
@@ -492,9 +518,12 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
     /* Called when a touch begins */
     
     for (UITouch *touch in touches) {
-        if(!_gameOver) {
-        _didShoot = YES;
-            [self shoot];
+        if(!_gameOver && !self.gamePaused) {
+            if (![_pauseButton containsPoint:[touch locationInNode:_pauseButton.parent]]) {
+                _didShoot = YES;
+                [self shoot];
+            }
+   
         }
     }
 }
@@ -507,6 +536,18 @@ static inline CGFloat  randomInRange(CGFloat low, CGFloat high)
                 [self newGame];
             }
             
+        }
+        else if (!_gameOver) {
+            if(self.gamePaused) {
+                if ([_resumeButton containsPoint:[touch locationInNode:_resumeButton.parent]]) {
+                    self.gamePaused = NO;
+                }
+            } else {
+                if ([_pauseButton containsPoint:[touch locationInNode:_resumeButton.parent]]) {
+                    self.gamePaused = YES;
+                }
+                
+            }
         }
     }
 }
